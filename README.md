@@ -1,4 +1,6 @@
-https://github.com/regina-s/Capstone-Stock-Analysis/tree/master# Capstone-Stock-Analysis
+https://github.com/regina-s/Capstone-Stock-Analysis/tree/master# 
+
+Capstone-Stock-Analysis
 Coursera Capstone Project: My first stock analysis tool with Python
 
 With download_SP500_timeseries_capstone.py the stock symbols and basic company information are downloaded from Wikipedia:
