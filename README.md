@@ -1,4 +1,7 @@
-# Capstone-Stock-Analysis
+
+
+
+https://github.com/regina-s/Capstone-Stock-Analysis/tree/master# Capstone-Stock-Analysis
 Coursera Capstone Project: My first stock analysis tool with Python
 
 With download_SP500_timeseries_capstone.py the stock symbols and basic company information are downloaded from Wikipedia:
@@ -14,3 +17,5 @@ The values are stored 'Analysis.csv' and can be used for quick selection of stoc
 
 AnalysisSP500_2.py is selection certain stocks depending on criteria, e.g. moving average.
 The time series of the selected stocks together with some basic company information are printed. 
+
+The shown plots and information can support buying and selling decisions - or you just get a better understanding what's happening in the marked.
