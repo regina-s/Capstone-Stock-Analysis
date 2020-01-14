@@ -1,6 +1,3 @@
-
-
-
 https://github.com/regina-s/Capstone-Stock-Analysis/tree/master# Capstone-Stock-Analysis
 Coursera Capstone Project: My first stock analysis tool with Python
 
@@ -12,6 +9,8 @@ Using the stock symbols the timeseries of the last 20 years of the stock data ar
 For each symbol a separate csv file containting, e.g. 'Close' data are created. I am using the free version and have a limitation of downloads per minute. To download all the stock date for S&P500 I included a waiting loop to overcome this problem.
 You have to start the routine and let it run for a couple of minutes until you get all the data. 
 The downloaded files can be used for further analysis.
+
+I also tried other sources, e.g. iexfinance. I did not want to pay money and reached quite soon the limitation for downloading data and I decided to used https://www.alphavantage.co/. 
 
 AnalysisSP500_capstone.py is reading all the time series of all SP500 stocks and certain values are calculated. This is much quicker than the first routine because I did not need a waiting loop.
 The values are stored 'Analysis.csv' and can be used for quick selection of stocks.
