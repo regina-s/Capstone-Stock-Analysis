@@ -1,0 +1,52 @@
+import pandas as pd
+import numpy as np
+import requests
+from matplotlib.pyplot import figure 
+import matplotlib.pyplot as plt 
+
+Filename='../../Data/Analysis.csv'
+data = pd.read_csv('../../Data/Analysis.csv', index_col=[0])
+
+#-----------------------------------------------------------
+#You can chooce different selection criteria:
+#data=data[(data['ma40']-data['ma200'])  > 0.05]
+#data=data[((data['MA40'] - data['MA200'])/data['Close'])  > 0.20]
+#data=data[((data['MA40'] - data['MA200'])/data['MA40'])  > 0.00]
+#data=data[((data['Close'] - data['MA40'])/data['Close'])  > 0.10]
+data=data[((data['Pricediff40'])/data['Close'])  > 0.1]
+
+#data=data[data['drop 40%  220 d'] < 0.1]
+#data=data[data['drop 20% 220 d'] < 0.05]
+
+df = pd.read_csv('../../Data/SP500.csv', index_col=[0])
+
+for Symbol in data['Symbol']:
+    print('------------------------------------------------')
+    print('General Info:')
+    print('Symbol:',df[df['Symbol'] == Symbol]['Symbol'])
+    print('GIC S Sector:',df[df['Symbol'] == Symbol]['GIC S Sector'])
+    print('GIC S Sub Industry:',df[df['Symbol'] == Symbol]['GIC S Sub Industry'])
+    print('Headquarters Location:',df[df['Symbol'] == Symbol]['Headquarters Location'])
+    
+    path='../../Data/'+Symbol+'.csv'
+    df1=pd.read_csv(path)
+    df1.rename(columns={"date": "Date", '1. open':'Open' , '2. high':'High', '3. low':'Low', '4. close':'Close', '5. volume':'Volume'}, inplace=True)
+    df1['MA40']=df1['Close'].rolling(40).mean().shift(-40)
+    df1['MA200']=df1['Close'].rolling(200).mean().shift(-200)
+    figure(num=None, figsize=(3, 3), dpi=80, facecolor='w', edgecolor='k') 
+    #df1['Close'].plot() 
+    #print(df1.head())
+       
+    #plt.tight_layout() 
+    plt.title(Symbol+ ' - One Year')
+    plt.ylabel('Price [USD]')
+    #plt.grid() 
+    p1, = plt.plot(df1['Date'][0:220],df1['Close'][0:220])
+    p2, = plt.plot(df1['Date'][0:220],df1['MA40'][0:220])
+    p3, = plt.plot(df1['Date'][0:220],df1['MA200'][0:220])
+    plt.legend(('Close', 'MA40','MA200'),loc='lower left')
+    #plt.xticks([df1['Date'][0:10]])
+    plt.xticks([])
+    plt.show() 
+
+    
